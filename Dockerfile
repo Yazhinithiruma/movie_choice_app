@@ -7,6 +7,9 @@ WORKDIR /app
 # ✅ Set npm cache to a writable directory (important for OpenShift)
 ENV npm_config_cache=/tmp/.npm
 
+# ✅ Create the cache directory and ensure it's writable
+RUN mkdir -p /tmp/.npm && chmod -R 777 /tmp/.npm
+
 # Copy the package.json and package-lock.json to install dependencies
 COPY package.json package-lock.json ./
 
