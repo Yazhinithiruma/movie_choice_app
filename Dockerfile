@@ -4,6 +4,9 @@ FROM node:16
 # Set the working directory in the container
 WORKDIR /app
 
+# ✅ Set npm cache to a writable directory (important for OpenShift)
+ENV npm_config_cache=/tmp/.npm
+
 # Copy the package.json and package-lock.json to install dependencies
 COPY package.json package-lock.json ./
 
